@@ -12,6 +12,9 @@ java $findbugs_cmd $1 | tee $findbugs_report_file
 echo '..... ls -os '
 ls -os
 
+echo '..... cat $findbugs_report_file'
+cat $findbugs_report_file 
+
 echo '..... cat $findbugs_report_file | grep -n $findbugs_err_word'
 cat $findbugs_report_file | grep -n $findbugs_err_word
 
