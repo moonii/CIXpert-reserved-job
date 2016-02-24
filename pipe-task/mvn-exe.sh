@@ -12,16 +12,21 @@ echo "#1: " $1
 echo "#2: " $2
 echo "#3: " $3
 
+echo "##########################################"
+echo "current directory"
+ll
+echo "##########################################"
+
 if [ $3 ]; then
 
     optionTests="-DskipTests=$3"
 
-else
-    if [$2 ! "package"]; then
-      optionTests=""
-    else
-      optionTests="-DskipTests=true"
-    fi
+#else
+#    if [$2 ! "package"]; then
+#      optionTests=""
+#    else
+#      optionTests="-DskipTests=true"
+#    fi
 fi
 
 echo "optionTests: $optionTests"
