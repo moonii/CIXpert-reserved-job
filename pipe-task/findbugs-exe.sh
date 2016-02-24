@@ -19,13 +19,13 @@ echo '..... cat $findbugs_report_file | grep -n $findbugs_err_word'
 cat $findbugs_report_file | grep -n "$findbugs_err_word"
 
 echo`..... cat $findbugs_report_file | grep -n $findbugs_err_word | awk -F $findbugs_err_word '{print 1}'`
-cat $findbugs_report_file | grep -n $findbugs_err_word | awk -F $findbugs_err_word '{print $1}'
+cat $findbugs_report_file | grep -n "$findbugs_err_word" | awk -F "$findbugs_err_word" '{print $1}'
 
 echo`..... cat $findbugs_report_file | grep -n $findbugs_err_word | awk -F $findbugs_err_word '{print 2}'`
-cat $findbugs_report_file | grep -n $findbugs_err_word | awk -F $findbugs_err_word '{print $2}'
+cat $findbugs_report_file | grep -n "$findbugs_err_word" | awk -F "$findbugs_err_word" '{print $2}'
 
 
-cnt $findbugs_report_file | grep -n "$findbugs_err_word" | awk -F $findbugs_err_word '{print $2}'`
+cnt=$findbugs_report_file | grep -n "$findbugs_err_word" | awk -F "$findbugs_err_word" '{print $2}'`
 
 echo "cnt =  $cnt"
 
