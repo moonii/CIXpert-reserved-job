@@ -8,21 +8,21 @@
 
 optionTests=""
 
-echo "#1: " $1
-echo "#2: " $2
-echo "#3: " $3
+echo "#1: $1 #2: $2 #3: $3#"
 
-echo "##########################################"
-echo "..... ls -os"
+echo "###########################################"
+echo "..... ls -os .............................."
 ls -os
 
-echo "..... ls -os findbugs-rsc-git/pipe-task .................."
+echo "..... ls -os findbugs-rsc-git/pipe-task ..."
 ls -os findbugs-rsc-git/pipe-task
 
-echo "..... ls -os $1 .................."
+echo "..... ls -os $1 ..........................."
 ls -os $1
 
-echo "##########################################"
+echo "..... cat findbugs-rsc-git/pipe-task/mvn-exe.sh"
+cat findbugs-rsc-git/pipe-task/mvn-exe.sh
+echo "###########################################"
 
 if [ $3 ]; then
 
