@@ -14,7 +14,14 @@ echo "#3: " $3
 
 echo "##########################################"
 echo "current directory"
-ll
+ls -os
+
+echo "ls -os findbugs-rsc-git .................."
+ls -os findbugs-rsc-git
+
+echo "ls -os git-01 .................."
+ls -os git-01
+
 echo "##########################################"
 
 if [ $3 ]; then
