@@ -26,10 +26,10 @@ fi
 
 echo "optionTests: $optionTests"
 
-mvn_cmd="-f "$1"/pom.xml "$optionTests" "$2
+mvn_cmd="mvn -f "$1"/pom.xml "$optionTests" "$2
 
 echo "mvn_cmd : " $mvn_cmd
 
-mvn $mvn_cmn 
+$mvn_cmn 
 
 #exit 1
