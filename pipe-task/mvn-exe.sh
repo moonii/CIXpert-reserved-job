@@ -19,8 +19,8 @@ ls -os
 echo "ls -os findbugs-rsc-git .................."
 ls -os findbugs-rsc-git
 
-echo "ls -os git-02 .................."
-ls -os git-02
+echo "ls -os $2 .................."
+ls -os $2
 
 echo "##########################################"
 
