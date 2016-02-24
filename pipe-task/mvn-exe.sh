@@ -26,9 +26,9 @@ fi
 
 echo "optionTests: $optionTests"
 
-mvn_cmd=" -f "$1"/pom.xml "$2 $optionTests
+mvn_cmd=" -f $1/pom.xml $2 $optionTests"
 
-echo "mvn_cmd : " $mvn_cmd
+echo "mvn_cmd : $mvn_cmd"
 
 mvn $mvn_cmn 
 
