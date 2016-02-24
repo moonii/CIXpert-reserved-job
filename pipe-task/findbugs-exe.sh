@@ -12,6 +12,7 @@ java $findbugs_cmd $1 | tee $findbugs_report_file
 # keyword find & ...
 cnt=`cat $findbugs_report_file | grep -n $findbugs_err_word | awk -F $findbugs_err_word '{print $2}'`
 
+echo "cnt =  $cnt"
 if [ $cnt -gt 0 ]; then
 	echo "findbugs warnings $cnt detected"
         exit 1
