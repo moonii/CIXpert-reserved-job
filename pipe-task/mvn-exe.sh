@@ -13,14 +13,14 @@ echo "#2: " $2
 echo "#3: " $3
 
 echo "##########################################"
-echo "current directory"
+echo "..... ls -os"
 ls -os
 
-echo "ls -os findbugs-rsc-git .................."
-ls -os findbugs-rsc-git
+echo "..... ls -os findbugs-rsc-git/pipe-task .................."
+ls -os findbugs-rsc-git/pipe-task
 
-echo "ls -os $2 .................."
-ls -os $2
+echo "..... ls -os $1 .................."
+ls -os $1
 
 echo "##########################################"
 
