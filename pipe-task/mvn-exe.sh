@@ -49,7 +49,7 @@ echo "mvn_cmd=$mvn_cmd="
 mvn $mvn_cmd | tee $mvn_report_file
 
 # keyword find & ...
-if [ $2 == "test" ]; then
+if [ $2 = "test" ]; then
 	echo "in test=$mvn_report_file="
 	
 	awk "$mvn_err_word" $mvn_report_file > $mvn_result_file
