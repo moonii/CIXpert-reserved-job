@@ -6,7 +6,7 @@
 # $3 value of -DskipTests : false or true(default)
 #################################
 
-optionTests=""
+mvn_cmd=" -f $1/pom.xml"
 
 echo "#1: $1 #2: $2 #3: $3#"
 
@@ -20,8 +20,6 @@ ls -os findbugs-rsc-git/pipe-task
 echo "..... ls -os $1 ..........................."
 ls -os $1
 
-echo "..... cat findbugs-rsc-git/pipe-task/mvn-exe.sh"
-cat findbugs-rsc-git/pipe-task/mvn-exe.sh
 echo "###########################################"
 
 if [ $3 ]; then
@@ -36,12 +34,17 @@ if [ $3 ]; then
 #    fi
 fi
 
-echo "optionTests: $optionTests"
+if [ $optionTests ]; then
 
-mvn_cmd=" -f $1/pom.xml $2 $optionTests"
+	echo "optionTests: $optionTests"
+	mvn $mvn_cmd $2 $optionTests
+else
+	mvn $mvn_cmd $2
+fi
+#mvn_cmd=" -f $1/pom.xml $2 $optionTests"
 
-echo "mvn_cmd : $mvn_cmd"
+#echo "mvn_cmd : $mvn_cmd"
 
-mvn $mvn_cmn 
+#mvn $mvn_cmn 
 
 #exit 1
