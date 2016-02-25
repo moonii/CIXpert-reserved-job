@@ -7,13 +7,13 @@
 #################################
 
 mvn_cmd=" -f $1/pom.xml"
-mvn_report_file='$2_report.html'
+mvn_report_file="$2_report.html"
 mvn_result_file="result.txt"
 mvn_cnt_file="count.txt"
 mvn_err_word='Results :'
 
 echo "###########################################"
-echo "#1=$1= #2=$2= #3=$3="
+echo "#1=$1=#2=$2=#3=$3="
 
 echo "..... ls -os .............................."
 ls -os
@@ -50,6 +50,7 @@ mvn $mvn_cmd | tee $mvn_report_file
 
 # keyword find & ...
 if [ $2 == "test" ]; then
+	echo "in test=$mvn_report_file="
 	line_num=`cat $mvn_report_file | grep -n "$mvn_err_word" | awk -F: '{print $1}'`
  	line_num=$((line_num+2))
 	
