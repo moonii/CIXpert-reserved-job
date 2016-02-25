@@ -5,7 +5,7 @@ findbugs_report_file='findbugs_report.html'
 findbugs_err_word='Warnings generated: '
 
 # findbugs execute
-java $findbugs_cmd $1 | tee $findbugs_report_file
+java $findbugs_cmd $1 2>&1 | tee $findbugs_report_file
 
 # keyword find & ...
 echo '..... ls -os '
