@@ -10,7 +10,7 @@ mvn_cmd=" -f $1/pom.xml"
 mvn_report_file="$2_report.html"
 mvn_result_file="result.txt"
 mvn_cnt_file="count.txt"
-mvn_err_word='Results :'
+mvn_err_word='Tests run:'
 
 echo "###########################################"
 echo "#1=$1=#2=$2=#3=$3="
@@ -51,8 +51,11 @@ mvn $mvn_cmd | tee $mvn_report_file
 # keyword find & ...
 if [ $2 == "test" ]; then
 	echo "in test=$mvn_report_file="
-	line_num=`cat $mvn_report_file | grep -n "$mvn_err_word" | awk -F: '{print $1}'`
- 	line_num=$((line_num+2))
+	
+	awk "$mvn_err_word" $mvn_report_file > $mvn_result_file
+	line_num=`cat $mvn_result_file | wc -l`
+	
+	echo "line_num=$line_num="
 	
 	sed "${line_num}!d" $mvn_report_file | sed "s/,//g"  > $mvn_result_file | awk '{print $5 $7 $9}' > $mvn_cnt_file
         cntF=`awk '{print $1}' $mvn_cnt_file`
