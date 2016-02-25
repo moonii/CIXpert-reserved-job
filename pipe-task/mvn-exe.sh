@@ -7,44 +7,63 @@
 #################################
 
 mvn_cmd=" -f $1/pom.xml"
-
-echo "#1: $1 #2: $2 #3: $3#"
+mvn_report_file='$2_report.html'
+mvn_result_file="result.txt"
+mvn_cnt_file="count.txt"
+mvn_err_word='Results :'
 
 echo "###########################################"
+echo "#1=$1= #2=$2= #3=$3="
+
 echo "..... ls -os .............................."
 ls -os
 
-echo "..... ls -os findbugs-rsc-git/pipe-task ..."
-ls -os findbugs-rsc-git/pipe-task
-
 echo "..... ls -os $1 ..........................."
 ls -os $1
-
 echo "###########################################"
 
 if [ $3 ]; then
 
     optionTests="-DskipTests=$3"
 
-#else
-#    if [$2 ! "package"]; then
-#      optionTests=""
-#    else
-#      optionTests="-DskipTests=true"
-#    fi
-fi
-
-if [ $optionTests ]; then
-
-	echo "optionTests: $optionTests"
-	mvn $mvn_cmd $2 $optionTests
 else
-	mvn $mvn_cmd $2
+	if [ $2 != "test" ]; then
+      		optionTests="-DskipTests=true"
+    	else
+      		optionTests="-DskipTests=false"
+    	fi
 fi
-#mvn_cmd=" -f $1/pom.xml $2 $optionTests"
 
-#echo "mvn_cmd : $mvn_cmd"
+#if [ $optionTests ]; then
+#
+#	echo "optionTests: $optionTests"
+#	mvn $mvn_cmd $2 $optionTests
+#else
+#	mvn $mvn_cmd $2
+#fi
 
-#mvn $mvn_cmn 
+mvn_cmd=" -f $1/pom.xml $2 $optionTests"
+echo "mvn_cmd=$mvn_cmd="
 
-#exit 1
+# mvn goal execute
+mvn $mvn_cmd | tee $mvn_report_file
+
+# keyword find & ...
+if [ $2 == "test" ]; then
+	line_num=`cat $mvn_report_file | grep -n "$mvn_err_word" | awk -F: '{print $1}'`
+ 	line_num=$((line_num+2))
+	
+	sed "${line_num}!d" $mvn_report_file | sed "s/,//g"  > $mvn_result_file | awk '{print $5 $7 $9}' > $mvn_cnt_file
+        cntF=`awk '{print $1}' $mvn_cnt_file`
+      	cntE=`awk '{print $2}' $mvn_cnt_file`
+	cntS=`awk '{print $3}' $mvn_cnt_file`
+
+	cntT=$((cntF+cntE+cntS))
+
+	if [ $cntT -gt 0 ]; then
+		exit 1
+	else
+		exit 0
+	fi
+
+fi
