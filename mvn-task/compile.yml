@@ -1,0 +1,13 @@
+---
+platform: linux
+image: docker:///maven#3.3.3
+inputs:
+  - name: sample-git
+  - name: ci-git
+outputs:
+  - name: jar-file
+    path: sample-git/target
+run:
+  path: ci-git/mvn-task/mvn-exe.sh 
+  args: ["sample-git", "compile"]
+
