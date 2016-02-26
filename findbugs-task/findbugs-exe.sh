@@ -14,13 +14,13 @@ ls -os
 #echo '..... cat $findbugs_report_file'
 #cat $findbugs_report_file 
 
-has_err_word=`cat $findbugs_report_file | grep -n "$findbugs_err_word"`
+err_word_cnt=`grep -n "$findbugs_err_word" $findbugs_report_file | wc -l`
 bug_cnt=`cat $findbugs_report_file | grep -n "$findbugs_err_word" | awk -F "$findbugs_err_word" '{print $2}'`
 line_cnt=`cat $findbugs_report_file | wc -l`
 
 echo "bug_cnt=$bug_cnt=($findbugs_report_file)line_cnt=$line_cnt"
 
-if [ $has_err_word ]; then
+if [ $err_word_cnt -ne 0 ]; then
 
 	if [ $bug_cnt -gt 0 ]; then
 		echo "findbugs warnings $bug_cnt detected"
@@ -31,6 +31,6 @@ if [ $has_err_word ]; then
 	fi
 
 else
-	exit 1
+	exit 0
 	
 fi
