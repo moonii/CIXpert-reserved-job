@@ -19,11 +19,17 @@ line_cnt=`cat $findbugs_report_file | wc -l`
 
 echo "bug_cnt =  $bug_cnt# ($findbugs_report_file)line_cnt=$line_cnt"
 
-if [ $bug_cnt -gt 0 ]; then
-	echo "findbugs warnings $bug_cnt detected"
-        exit 1
-else
-        echo "findbugs check success"
-        exit 0
-fi
+if [ $bug_cnt ]; then
 
+	if [ $bug_cnt -gt 0 ]; then
+		echo "findbugs warnings $bug_cnt detected"
+        	exit 1
+	else
+	        echo "findbugs check success"
+        	exit 0
+	fi
+
+else
+	exit 1
+	
+fi
