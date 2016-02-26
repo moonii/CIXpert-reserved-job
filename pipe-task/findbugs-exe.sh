@@ -8,8 +8,8 @@ findbugs_err_word='Warnings generated: '
 java $findbugs_cmd $1 2>&1 | tee $findbugs_report_file
 
 # keyword find & ...
-echo '..... ls -os '
-ls -os
+#echo '..... ls -os '
+#ls -os
 
 #echo '..... cat $findbugs_report_file'
 #cat $findbugs_report_file 
@@ -18,7 +18,7 @@ err_word_cnt=`grep -n "$findbugs_err_word" $findbugs_report_file | wc -l`
 bug_cnt=`cat $findbugs_report_file | grep -n "$findbugs_err_word" | awk -F "$findbugs_err_word" '{print $2}'`
 line_cnt=`cat $findbugs_report_file | wc -l`
 
-echo "bug_cnt=$bug_cnt=($findbugs_report_file)line_cnt=$line_cnt"
+#echo "bug_cnt=$bug_cnt=($findbugs_report_file)line_cnt=$line_cnt"
 
 if [ $err_word_cnt -ne 0 ]; then
 
@@ -31,6 +31,7 @@ if [ $err_word_cnt -ne 0 ]; then
 	fi
 
 else
+	echo "findbugs check success"
 	exit 0
 	
 fi
