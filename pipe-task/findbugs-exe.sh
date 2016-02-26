@@ -1,4 +1,4 @@
-#!/bin/sht $findbugs_report_file | grep -n "$findbugs_err_word" 
+#!/bin/sh 
 
 findbugs_cmd="-Xmx512m -jar /findbugs-3.0.1/lib/findbugs.jar -textui "
 findbugs_report_file='findbugs_report.html'
