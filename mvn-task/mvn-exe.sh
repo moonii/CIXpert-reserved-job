@@ -11,6 +11,7 @@ mvn_report_file="$2_report.html"
 mvn_result_file="result"
 mvn_cnt_file="count.txt"
 mvn_err_word='Tests run:'
+mvn_no_test="No tests to run"
 
 echo "###########################################"
 echo "#1=$1=#2=$2=#3=$3="
@@ -40,6 +41,17 @@ mvn $mvn_cmd | tee $mvn_report_file
 
 # keyword find & ...
 if [ $2 = "test" ]; then
+	# No tests to run check ##########################
+	awk "/$mvn_no_test/" $mvn_report_file > $mvn_result_file
+
+	line_num=`cat $mvn_result_file | wc -l`
+
+	echo "line_num=$line_num="
+
+	if [ $line_num = "1" ]; then
+		exit 1
+	fi
+	##################################################
 	echo "in test=$mvn_report_file="
 	
 	awk "/$mvn_err_word/" $mvn_report_file > $mvn_result_file
