@@ -42,11 +42,11 @@ mvn $mvn_cmd | tee $mvn_report_file
 # keyword find & ...
 if [ $2 = "test" ]; then
 	# No tests to run check ##########################
-	awk "/$mvn_no_test/" $mvn_report_file > $mvn_result_file
+	awk "/$mvn_no_test/" $mvn_report_file > $mvn_result_file".no"
 
-	line_num=`cat $mvn_result_file | wc -l`
+	line_num=`cat $mvn_result_file".no" | wc -l`
 
-	echo "line_num=$line_num="
+	#echo "notest.line_num=$line_num="
 
 	if [ $line_num = "1" ]; then
 		exit 1
@@ -58,20 +58,21 @@ if [ $2 = "test" ]; then
 
 	line_num=`cat $mvn_result_file | wc -l`
 	
-	echo "line_num=$line_num="
+	#echo "line_num=$line_num="
 	
 	sed "${line_num}!d" $mvn_result_file | sed "s/,//g"  > $mvn_result_file".2" #| awk '{print $5" "$7" "$9}' > $mvn_cnt_file
 	cat $mvn_result_file".2" | awk '{print $5" "$7" "$9}' > $mvn_cnt_file
 
-	echo "$mvn_cnt_file........................"
- 	cat $mvn_cnt_file
+	#echo "$mvn_cnt_file........................"
+ 	#cat $mvn_cnt_file
 
         cntF=`awk '{print $1}' $mvn_cnt_file`
       	cntE=`awk '{print $2}' $mvn_cnt_file`
 	cntS=`awk '{print $3}' $mvn_cnt_file`
 
 	cntT=$((cntF+cntE+cntS))
-	echo "cntT=$cntT=............................."
+	#echo "cntT=$cntT=............................."
+
 	if [ $cntT -gt 0 ]; then
 		exit 1
 	else
