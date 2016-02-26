@@ -13,13 +13,13 @@ mvn_cnt_file="count.txt"
 mvn_err_word='Tests run:'
 mvn_no_test="No tests to run"
 
-echo "###########################################"
-echo "#1=$1=#2=$2=#3=$3="
-echo "..... ls -os .............................."
-ls -os
-echo "..... ls -os $1 ..........................."
-ls -os $1
-echo "###########################################"
+#echo "###########################################"
+#echo "#1=$1=#2=$2=#3=$3="
+#echo "..... ls -os .............................."
+#ls -os
+#echo "..... ls -os $1 ..........................."
+#ls -os $1
+#echo "###########################################"
 
 if [ $3 ]; then
 
@@ -34,7 +34,7 @@ else
 fi
 
 mvn_cmd=" -f $1/pom.xml $2 $optionTests"
-echo "mvn_cmd=$mvn_cmd="
+#echo "mvn_cmd=$mvn_cmd="
 
 # mvn goal execute
 mvn $mvn_cmd | tee $mvn_report_file
@@ -52,7 +52,7 @@ if [ $2 = "test" ]; then
 		exit 1
 	fi
 	##################################################
-	echo "in test=$mvn_report_file="
+	#echo "in test=$mvn_report_file="
 	
 	awk "/$mvn_err_word/" $mvn_report_file > $mvn_result_file
 
