@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #################################
-# $1 directory of pom.xml : resource name of job 
+# $1 path/directory of pom.xml : resource name of job 
 # $2 goal of maven        : compilie, test, package...
 # $3 value of -DskipTests : false or true(default)
 #################################
@@ -33,7 +33,8 @@ else
     	fi
 fi
 
-mvn_cmd=" -f $1/pom.xml $2 $optionTests"
+#mvn_cmd=" -f $1/pom.xml $2 $optionTests"
+mvn_cmd=" -f $1 $2 $optionTests"
 #echo "mvn_cmd=$mvn_cmd="
 
 # mvn goal execute
