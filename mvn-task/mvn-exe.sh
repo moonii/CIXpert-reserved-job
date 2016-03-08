@@ -19,6 +19,13 @@ mvn_no_test="No tests to run"
 #ls -os
 #echo "..... ls -os $1 ..........................."
 #ls -os $1
+echo "MID_PATH="$MID_PATH"="
+if [ $MID_PATH ]; then
+	POM_PATH="$1/$MID_PATH/pom.xml"
+else
+	POM_PATH="$1/pom.xml"
+fi
+echo "POM_PATH=$POM_PATH="
 #echo "###########################################"
 
 if [ $3 ]; then
