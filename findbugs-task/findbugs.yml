@@ -10,4 +10,4 @@ outputs:
     path: jar-file/reports
 run:
   path: ci-git/findbugs-task/findbugs-exe.sh 
-  args: ["jar-file"]
+  args: ["jar-file/classes"]
