@@ -2,7 +2,7 @@
 platform: linux
 image: docker:///mhlee/javapmd
 inputs:
-  - name: sample-git
+  - name: source-git
   - name: jar-file
   - name: ci-git
 outputs:

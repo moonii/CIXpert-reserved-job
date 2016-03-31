@@ -2,8 +2,8 @@
 platform: linux
 image: docker:///mhlee/javapmd
 inputs:
-  - name: sample-git
+  - name: source-git
   - name: ci-git
 run:
   path: ci-git/pmd-task/pmd-exe.sh
-  args: ["ci-git", "sample-git"]
+  args: ["ci-git", "source-git"]
