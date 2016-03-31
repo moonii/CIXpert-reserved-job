@@ -8,7 +8,7 @@ inputs:
 
 run:
   path: ci-git/mvn-task/mvn-exe.sh
-  args: ["source-git", "package", "true"]
+  args: ["source-git/src/PaasXpertPortal", "package", "true"]
 
 outputs:
   - name: pkg-out

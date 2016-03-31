@@ -7,4 +7,4 @@ inputs:
 
 run:
   path: ci-git/mvn-task/mvn-exe.sh 
-  args: ["source-git", "test", "false"]
+  args: ["source-git/src/PaasXpertPortal", "test", "false"]
