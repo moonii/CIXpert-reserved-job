@@ -14,7 +14,7 @@ err_word_cnt=`grep -n "$pmd_no_ruleset" $pmd_report_file | wc -l`
 
 echo "[mhlee]err_word_cnt=$err_word_cnt=cnt=$cnt="
 
-if [ $err_word_cnt -gt 0]; then
+if [ $err_word_cnt -gt 0 ]; then
 	echo "$pmd_no_ruleset"
 	exit 1
 fi
