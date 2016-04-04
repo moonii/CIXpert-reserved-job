@@ -1,0 +1,15 @@
+---
+platform: linux
+image: docker:///maven#3.3.3
+
+inputs:
+  - name: source-git
+  - name: ci-git
+
+run:
+  path: ci-git/mvn-task/mvn-exe.sh
+  args: ["source-git", "package", "true"]
+
+outputs:
+  - name: pkg-out
+    path: source-git/target

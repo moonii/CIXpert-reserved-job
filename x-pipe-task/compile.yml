@@ -1,0 +1,13 @@
+---
+platform: linux
+image: docker:///maven#3.3.3
+inputs:
+  - name: source-git
+  - name: ci-git
+outputs:
+  - name: jar-file
+    path: source-git/src/PaasXpertPortal/target
+run:
+  path: ci-git/mvn-task/mvn-exe.sh 
+  args: ["source-git", "compile"]
+

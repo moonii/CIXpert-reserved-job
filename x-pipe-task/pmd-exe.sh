@@ -12,7 +12,9 @@ java $pmd_cmd | tee $pmd_report_file
 cnt="$(grep -c $pmd_err_word $pmd_report_file)"
 err_word_cnt=`grep -n "$pmd_no_ruleset" $pmd_report_file | wc -l`
 
-if [ $err_word_cnt -gt 0 ]; then
+echo "[mhlee]err_word_cnt=$err_word_cnt=cnt=$cnt="
+
+if [ $err_word_cnt -gt 0]; then
 	echo "$pmd_no_ruleset"
 	exit 1
 fi
