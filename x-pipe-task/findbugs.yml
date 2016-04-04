@@ -9,5 +9,5 @@ outputs:
   - name: findbugs-out
     path: jar-file/reports
 run:
-  path: ci-git/findbugs-task/findbugs-exe.sh 
+  path: ci-git/x-pipe-task/findbugs-exe.sh 
   args: ["jar-file/tbd"]
