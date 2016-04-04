@@ -10,4 +10,4 @@ outputs:
     path: jar-file/reports
 run:
   path: ci-git/x-pipe-task/findbugs-exe.sh 
-  args: ["jar-file/tbd"]
+  args: ["jar-file/classes"]
