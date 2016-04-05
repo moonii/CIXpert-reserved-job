@@ -9,7 +9,6 @@ inputs:
 
 outputs:
   - name: renamed-out
-    path: source-git/src/PaasXpertPortal/target
 
 run:
   path: ci-git/etc-task/rename-release-exe.sh
