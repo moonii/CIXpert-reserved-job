@@ -14,10 +14,9 @@ inputs:
 
 outputs:
   - name: renamed-out
-    path: source-git/src/PaasXpertPortal/target
 
 run:
-  #path: ci-git/etc-task/rename-release-exe.sh
-  path: cp
-  args: ["pkg-out/PaasXpert-Portal-0.0.1.war", "renamed-out/PaasXpert-Portal-VERSION.war"]
+  path: ci-git/etc-task/rename-release-exe.sh
+  #path: cp
+  #args: ["pkg-out/PaasXpert-Portal-0.0.1.war", "renamed-out/PaasXpert-Portal-$(cat version/number).war"]
 
