@@ -4,7 +4,7 @@
 set -e
 
 OUTPUT="$PWD/candidate-release"
-VERSION="$(cat version/version)"
+VERSION="$(cat ./version/number)"
 FINAL_VERSION="$(cat final-version/version)"
 
 echo "OUTPUT=$OUTPUT=VERSION=$VERSION=FINAL_VERSION=$FINAL_VERSION="
