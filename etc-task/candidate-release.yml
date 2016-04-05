@@ -1,0 +1,14 @@
+---
+plattform: linux
+
+image: docker:///concourse/concourse-ci
+
+inputs:
+- name: source-git
+- name: version
+
+outputs:
+- name: candidate-release
+
+run:
+  path: ci-git/etc-task/candidate-release

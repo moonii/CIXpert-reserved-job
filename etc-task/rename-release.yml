@@ -1,0 +1,13 @@
+---
+platform: linux
+
+inputs:
+  - name: source-git
+  - name: version
+
+outputs:
+  - name: renamed-out
+
+run:
+  path: ci-git/etc-task/rename-release-exe.sh
+

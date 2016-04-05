@@ -3,6 +3,7 @@
 findbugs_cmd="-Xmx512m -jar /findbugs-3.0.1/lib/findbugs.jar -textui "
 findbugs_report_file='findbugs_report.html'
 findbugs_err_word='Warnings generated: '
+findbugs_err_not_found='File not found: '
 
 # findbugs execute
 java $findbugs_cmd $1 2>&1 | tee $findbugs_report_file
@@ -19,6 +20,14 @@ bug_cnt=`cat $findbugs_report_file | grep -n "$findbugs_err_word" | awk -F "$fin
 line_cnt=`cat $findbugs_report_file | wc -l`
 
 #echo "bug_cnt=$bug_cnt=($findbugs_report_file)line_cnt=$line_cnt"
+
+not_found_cnt=`grep -n "$findbugs_err_not_found" $findbugs_report_file | wc -l`
+#echo "not_found_cnt=$not_found_cnt="
+
+if [ $not_found_cnt -gt 0 ]; then
+	echo "findbugs check fail"
+	exit 1
+fi
 
 if [ $err_word_cnt -ne 0 ]; then
 

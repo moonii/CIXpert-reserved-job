@@ -18,6 +18,7 @@ java $findbugs_cmd $1 2>&1 | tee $findbugs_report_file
 err_word_cnt=`grep -n "$findbugs_err_word" $findbugs_report_file | wc -l`
 bug_cnt=`cat $findbugs_report_file | grep -n "$findbugs_err_word" | awk -F "$findbugs_err_word" '{print $2}'`
 line_cnt=`cat $findbugs_report_file | wc -l`
+
 #echo "bug_cnt=$bug_cnt=($findbugs_report_file)line_cnt=$line_cnt"
 
 not_found_cnt=`grep -n "$findbugs_err_not_found" $findbugs_report_file | wc -l`
