@@ -8,4 +8,4 @@ VERSION="$(cat version/version)"
 
 echo "VERSION=$VERSION="
 
-cp pkg-out/PaasXpert-Portal-0.0.1.war renamed-out/PaasXpert-Portal-:${VERSION}.war
+cp pkg-out/PaasXpert-Portal-0.0.1.war renamed-out/PaasXpert-Portal-${VERSION}.war
