@@ -1,0 +1,144 @@
+
+resources:
+  - name: source-git
+    type: git
+    source:
+      branch: master
+      uri: git@github.com:moonii/testPaaSXpert.git
+      private_key: {{github-private-key}}
+  - name: ci-git
+    type: git
+    source:
+      uri: git@github.com:moonii/findbugs-task-rsc.git
+      private_key: {{github-private-key}}
+      branch: master
+  - name: deploy2cf
+    type: cf
+    source:
+      api: {{CF_API}}
+      username: {{CF_USERNAME}}
+      password: {{CF_PASSWORD}}
+      organization: {{CF_ORG}}
+      space: {{CF_SPACE}}
+      skip_cert_check: true
+  - name: version
+    type: semver
+    source:
+      driver: git
+      uri: git@github.com:moonii/paasXpertVersion.git
+      branch: master
+      file: version
+      private_key: {{github-private-key}}
+
+  - name: github-release
+    type: github-release
+    source:
+      access_token: {{github-access-token}}
+      repository: testPaaSXpert
+      user: moonii
+
+jobs:
+- name: job-01-pmd
+  public: true
+  plan:
+  - aggregate:
+    - get: source-git
+      trigger: true
+    - get: ci-git
+  - task: 01-01-pmd
+    privileged: true
+    file: ci-git/pmd-task/pmd.yml
+
+- name: job-02-findbugs
+  plan:
+  - aggregate:
+    - get: source-git
+      passed:
+      - job-01-pmd
+      trigger: true
+    - get: ci-git
+  - task: 02-01-compile
+    privileged: true
+    file: ci-git/mvn-task/compile.yml
+  - task: 02-02-findbugs
+    privileged: true
+    file: ci-git/findbugs-task/findbugs.yml
+
+- name: job-03-unit
+  serial: true
+  plan:
+  - aggregate:
+    - get: ci-git
+    - get: source-git
+      passed:
+      - job-02-findbugs
+      trigger: true
+  - task: 03-01-junit
+    privileged: true
+    file: ci-git/mvn-task/unittest.yml
+
+- name: major
+  public: true
+  serial_groups: [version]
+  plan:
+  - get: version
+    params: {bump: major}		#{bump: major, pre: rc}
+  - put: version
+    params: {file: version/number}
+
+- name: job-04-pkg-deploy
+  serial: true
+  plan:
+  - aggregate:
+    - get: ci-git
+    - get: source-git
+      passed:
+      - job-03-unit
+      trigger: true
+
+  - task: 04-01-pkg
+    privileged: true
+    file: ci-git/mvn-task/package.yml
+
+  - put: 04-02-deploy2cf
+    resource: deploy2cf
+    params:
+      manifest: source-git/src/PaasXpertPortal/bin/manifest.yml
+      path: pkg-out
+
+- name: job-05-version-gitrelease
+  serial: true
+  plan:
+  - aggregate:
+    - get: ci-git
+    - get: source-git
+      passed:
+      - job-04-pkg-deploy
+      trigger: true
+    - get: version
+      params: {bump: major, pre: rc}
+
+  - put: version
+    params: {file: version/number}
+
+
+  - task: 01-pkg
+    privileged: true
+    file: ci-git/mvn-task/package.yml
+
+  - task: 02-rename-file
+    privileged: true
+    file: ci-git/etc-task/rename.yml
+
+  - task: commitish
+    privileged: true
+    file: ci-git/etc-task/commitish.yml
+
+  - put: github-release
+    params:
+      name: version/number
+      tag: version/number
+      commitish: generated-commitish/commitish
+      globs:
+      - renamed-out/PaasXpert-Portal-*.war
+
