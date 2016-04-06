@@ -2,7 +2,7 @@
 
 #set -e
 
-echo "rename-release-exe.sh called"
+echo "rename.sh called"
 
 VERSION="$(cat version/number)"
 

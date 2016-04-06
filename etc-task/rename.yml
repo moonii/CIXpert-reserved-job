@@ -1,13 +1,12 @@
 ---
 platform: linux
 
-image_resource:
-  type: docker-image
-  source:
-    repository: concourse/concourse-ci
+#image_resource:
+#  type: docker-image
+#  source:
+#    repository: concourse/concourse-ci
 
 inputs:
-  - name: source-git
   - name: ci-git
   - name: version
   - name: pkg-out
@@ -16,7 +15,7 @@ outputs:
   - name: renamed-out
 
 run:
-  path: ci-git/etc-task/rename-release-exe.sh
+  path: ci-git/etc-task/rename.sh
   #path: cp
   #args: ["pkg-out/PaasXpert-Portal-0.0.1.war", "renamed-out/PaasXpert-Portal-$(cat version/number).war"]
 
