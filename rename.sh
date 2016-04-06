@@ -1,8 +1,7 @@
-#!/bin/bash
 
 #set -e
 
-echo "rename-release-exe.sh called"
+echo "rename-release-exe.sh called 22"
 
 #VERSION="$(cat version/number)"
 #VERSION="223.0.0.rc"
