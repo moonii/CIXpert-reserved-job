@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -e
+#set -e
 
 echo "rename-release-exe.sh called"
 
