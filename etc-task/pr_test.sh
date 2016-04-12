@@ -4,4 +4,4 @@
 
 echo "pr_test.sh called"
 
-ls -l pr-repo
+ls -l pr_repo
