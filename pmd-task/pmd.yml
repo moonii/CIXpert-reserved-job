@@ -4,6 +4,9 @@ image: docker:///mhlee/javapmd
 inputs:
   - name: source-git
   - name: ci-git
+params:
+  RULE_PATH:
+
 run:
   path: ci-git/pmd-task/pmd-exe.sh
   args: ["{{RULE_PATH}}", "source-git"]
