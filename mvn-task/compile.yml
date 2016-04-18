@@ -9,5 +9,5 @@ outputs:
     path: source-git/src/PaasXpertPortal/target
 run:
   path: ci-git/mvn-task/mvn-exe.sh 
-  args: ["source-git/src/PaasXpertPortal", "compile"]
+  args: [{{POM_PATH}}, "compile"]
 

@@ -6,4 +6,4 @@ inputs:
   - name: ci-git
 run:
   path: ci-git/pmd-task/pmd-exe.sh
-  args: ["ci-git", "source-git"]
+  args: [{{RULE_PATH}}, "source-git"]
