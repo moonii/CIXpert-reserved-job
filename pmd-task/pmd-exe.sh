@@ -9,6 +9,8 @@ pmd_report_file='pmd_report.xml'
 pmd_no_ruleset='Ruleset not found'
 
 echo "RULE_PATH=$RULE_PATH=pmd_cmd=$pmd_cmd="
+echo "env...."
+env
 
 java $pmd_cmd | tee $pmd_report_file
 cnt="$(grep -c $pmd_err_word $pmd_report_file)"
