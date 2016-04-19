@@ -30,7 +30,7 @@ else
 fi
 
 #mvn_cmd=" -f $1/pom.xml $2 $optionTests"
-mvn_cmd=" -f tbd/$POM_PATH $2 $optionTests"
+mvn_cmd=" -f $POM_PATH $2 $optionTests"
 echo "mvn_cmd=$mvn_cmd="
 
 # mvn goal execute
@@ -42,7 +42,7 @@ mvn $mvn_cmd | tee $mvn_report_file
 awk "/$mvn_fatal/" $mvn_report_file > $mvn_result_file".fatal"
 
 line_num=`cat $mvn_result_file".fatal" | wc -l`
-echo "faltal.line_num=$line_num="
+#echo "faltal.line_num=$line_num="
 if [ $line_num -gt 0 ]; then
 	exit 1
 fi
