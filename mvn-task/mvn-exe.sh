@@ -40,7 +40,7 @@ mvn $mvn_cmd | tee $mvn_report_file
 replace="target/classes"
 destination="compile-out"
 echo 'is package?'
-if [ $2 = "package"]; then
+if [ $2 = "package" ]; then
 	echo 'package yes'
 	replace="target"
 	destination="pkg-out"
