@@ -13,7 +13,7 @@ mvn_result_file="result"
 mvn_cnt_file="count.txt"
 mvn_err_word='Tests run:'
 mvn_no_test="No tests to run"
-mvn_fatal="[FATAL]"
+mvn_fatal="FATAL"
 
 echo "#1=$1=#2=$2=#3=$3=POM_PATH=$POM_PATH"
 
