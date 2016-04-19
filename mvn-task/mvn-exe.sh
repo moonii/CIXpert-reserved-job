@@ -43,7 +43,7 @@ else
 fi
 
 #mvn_cmd=" -f $1/pom.xml $2 $optionTests"
-mvn_cmd=" -f $1 $2 $optionTests"
+mvn_cmd=" -f $POM_PATH $2 $optionTests"
 echo "mvn_cmd=$mvn_cmd="
 
 # mvn goal execute
