@@ -36,6 +36,14 @@ echo "mvn_cmd=$mvn_cmd="
 # mvn goal execute
 mvn $mvn_cmd | tee $mvn_report_file
 
+# move output
+replace="target/classes"
+filename=`basename $POM_PATH`
+output_path=`echo ${POM_PATH//$filename/$replace}`
+echo "output_path=$output_path="
+cp -r $output_path jar-file
+
+
 # keyword find & ...
 
 # FATAL check ####################################
