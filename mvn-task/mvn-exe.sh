@@ -13,6 +13,7 @@ mvn_cnt_file="count.txt"
 mvn_err_word='Tests run:'
 mvn_no_test="No tests to run"
 mvn_fatal="FATAL"
+mvn_build_failure="BUILD FAILURE"
 #echo "#1=$1=#2=$2=#3=$3=POM_PATH=$POM_PATH"
 
 if [ $3 ]; then
