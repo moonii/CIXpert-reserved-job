@@ -3,7 +3,7 @@ platform: linux
 image: docker:///mhlee/javapmd
 
 params:
-  POM_PATH:
+  VERSION:
 
 inputs:
   - name: source-git

@@ -3,12 +3,13 @@
 # $1 : ci resource name
 # $2 : project resource name
 
-pmd_cmd="-Xmx512m -jar /pmd-bin-4.2.6/lib/pmd-4.2.6.jar $2/ xml $RULE_PATH"
+#pmd_cmd="-Xmx512m -jar /pmd-bin-4.2.6/lib/pmd-4.2.6.jar $2/ xml $RULE_PATH"
+pmd_cmd="-Xmx512m -jar /pmd-bin-$VERSION/lib/pmd-$VERSION.jar $2/ xml $RULE_PATH"
 pmd_err_word='<violation'
 pmd_report_file='pmd_report.xml'
 pmd_no_ruleset='Ruleset not found'
 
-echo "RULE_PATH=$RULE_PATH=pmd_cmd=$pmd_cmd="
+echo "RULE_PATH=$RULE_PATH=VERSION=$VERSION=pmd_cmd=$pmd_cmd="
 echo "env...."
 env
 
