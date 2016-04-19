@@ -39,11 +39,13 @@ mvn $mvn_cmd | tee $mvn_report_file
 # move output
 replace="target/classes"
 destination="compile-out"
+echo 'is package?'
 if [ $2 = "package"] ; then
+	echo 'package yes'
 	replace="target"
 	destination="pkg-out"
 fi
-
+echo 'package check end'
 filename=`basename $POM_PATH`
 output_path=`echo $POM_PATH | sed -e "s#$filename#$replace#g"`
 echo "filename=$filename=output_path=$output_path=destination=$destination="
