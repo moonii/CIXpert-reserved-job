@@ -40,6 +40,7 @@ awk "/$mvn_fatal/" $mvn_report_file > $mvn_result_file".fatal"
 line_num=`cat $mvn_result_file".fatal" | wc -l`
 #echo "faltal.line_num=$line_num="
 if [ $line_num -gt 0 ]; then
+	echo "FATAL ERROR"
 	exit 1
 fi
 ##################################################
@@ -50,6 +51,7 @@ awk "/$mvn_build_failure/" $mvn_report_file > $mvn_result_file".buildf"
 line_num=`cat $mvn_result_file".buildf" | wc -l`
 #echo "buildf.line_num=$line_num="
 if [ $line_num -gt 0 ]; then
+	echo "BUILD FAILURE"
         exit 1
 fi
 ##################################################
@@ -78,6 +80,7 @@ if [ $2 = "test" ]; then
 	#echo "notest.line_num=$line_num="
 
 	if [ $line_num = "1" ]; then
+		echo "NO TESTS TO RUN"
 		exit 1
 	fi
 	##################################################
@@ -103,6 +106,7 @@ if [ $2 = "test" ]; then
 	#echo "cntT=$cntT=............................."
 
 	if [ $cntT -gt 0 ]; then
+		echo "TEST ERROR"
 		exit 1
 	else
 		exit 0
