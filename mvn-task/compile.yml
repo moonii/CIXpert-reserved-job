@@ -1,6 +1,10 @@
 ---
 platform: linux
 image: docker:///maven#3.3.3
+
+params:
+  POM_PATH:
+
 inputs:
   - name: source-git
   - name: ci-git
@@ -9,5 +13,5 @@ outputs:
     path: source-git/src/PaasXpertPortal/target
 run:
   path: ci-git/mvn-task/mvn-exe.sh 
-  args: [{{POM_PATH}}, "compile"]
+  args: ["tbd", "compile"]
 

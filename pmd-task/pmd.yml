@@ -3,7 +3,7 @@ platform: linux
 image: docker:///mhlee/javapmd
 
 params:
-  RULE_PATH: ~
+  RULE_PATH:
 
 inputs:
   - name: source-git
@@ -11,4 +11,4 @@ inputs:
 
 run:
   path: ci-git/pmd-task/pmd-exe.sh
-  args: ["{{RULE_PATH}}", "source-git"]
+  args: ["tbd", "source-git"]

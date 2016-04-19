@@ -6,7 +6,8 @@
 # $3 value of -DskipTests : false or true(default)
 #################################
 
-mvn_cmd=" -f $1/pom.xml"
+#mvn_cmd=" -f $1/pom.xml"
+mvn_cmd=" -f $POM_PATH"
 mvn_report_file="$2_report.html"
 mvn_result_file="result"
 mvn_cnt_file="count.txt"
@@ -14,7 +15,8 @@ mvn_err_word='Tests run:'
 mvn_no_test="No tests to run"
 
 #echo "###########################################"
-echo "#1=$1=#2=$2=#3=$3="
+
+echo "#1=$1=#2=$2=#3=$3=POM_PATH=$POM_PATH"
 #echo "..... ls -os .............................."
 #ls -os
 #echo "..... ls -os $1 ..........................."

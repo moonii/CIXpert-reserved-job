@@ -1,10 +1,14 @@
 ---
 platform: linux
 image: docker:///maven#3.3.3
+
+params:
+  POM_PATH:
+
 inputs:
   - name: source-git
   - name: ci-git
 
 run:
   path: ci-git/mvn-task/mvn-exe.sh 
-  args: ["source-git/src/PaasXpertPortal", "test", "false"]
+  args: ["tbd", "test", "false"]

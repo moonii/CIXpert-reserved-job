@@ -1,6 +1,10 @@
 ---
 platform: linux
 image: docker:///mhlee/javapmd
+
+params:
+  POM_PATH:
+
 inputs:
   - name: source-git
   - name: jar-file
