@@ -6,7 +6,6 @@
 # $3 value of -DskipTests : false or true(default)
 #################################
 
-#mvn_cmd=" -f $1/pom.xml"
 mvn_cmd=" -f $POM_PATH"
 mvn_report_file="$2_report.html"
 mvn_result_file="result"
@@ -14,9 +13,7 @@ mvn_cnt_file="count.txt"
 mvn_err_word='Tests run:'
 mvn_no_test="No tests to run"
 mvn_fatal="FATAL"
-mvn_build_failure="BUILD FAILURE"
-
-echo "#1=$1=#2=$2=#3=$3=POM_PATH=$POM_PATH"
+#echo "#1=$1=#2=$2=#3=$3=POM_PATH=$POM_PATH"
 
 if [ $3 ]; then
 
@@ -30,31 +27,13 @@ else
     	fi
 fi
 
-#mvn_cmd=" -f $1/pom.xml $2 $optionTests"
 mvn_cmd=" -f $POM_PATH $2 $optionTests"
-echo "mvn_cmd=$mvn_cmd="
+#echo "mvn_cmd=$mvn_cmd="
 
 # mvn goal execute
 mvn $mvn_cmd | tee $mvn_report_file
 
-# move output
-replace="target/classes"
-destination="compile-out"
-echo 'is package?'
-if [ $2 = "package" ]; then
-	echo 'package yes'
-	replace="target"
-	destination="pkg-out"
-fi
-echo 'package check end'
-filename=`basename $POM_PATH`
-output_path=`echo $POM_PATH | sed -e "s#$filename#$replace#g"`
-echo "filename=$filename=output_path=$output_path=destination=$destination="
-
-cp -r $output_path $destination
-
-# keyword find & ...
-
+# keyword find & check ...
 # FATAL check ####################################
 awk "/$mvn_fatal/" $mvn_report_file > $mvn_result_file".fatal"
 
@@ -65,17 +44,30 @@ if [ $line_num -gt 0 ]; then
 fi
 ##################################################
 
-
-# BUILD FAILURE check ####################################
+# BUILD FAILURE check ############################
 awk "/$mvn_build_failure/" $mvn_report_file > $mvn_result_file".buildf"
 
 line_num=`cat $mvn_result_file".buildf" | wc -l`
-echo "buildf.line_num=$line_num="
+#echo "buildf.line_num=$line_num="
 if [ $line_num -gt 0 ]; then
-	echo "$mvn_build_failure !!!"
         exit 1
 fi
 ##################################################
+
+# move output
+replace="target/classes"
+destination="compile-out"
+
+if [ $2 = "package" ]; then
+        replace="target"
+        destination="pkg-out"
+fi
+
+filename=`basename $POM_PATH`
+output_path=`echo $POM_PATH | sed -e "s#$filename#$replace#g"`
+#echo "filename=$filename=output_path=$output_path=destination=$destination="
+
+cp -r $output_path $destination
 
 if [ $2 = "test" ]; then
 	# No tests to run check ##########################
