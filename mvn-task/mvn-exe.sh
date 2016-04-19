@@ -23,9 +23,9 @@ echo "#1=$1=#2=$2=#3=$3=POM_PATH=$POM_PATH"
 #ls -os $1
 echo "MID_PATH="$MID_PATH"="
 if [ $MID_PATH ]; then
-	POM_PATH="$1/$MID_PATH/pom.xml"
+	POM_PATH="$POM_PATH/$MID_PATH/pom.xml"
 else
-	POM_PATH="$1/pom.xml"
+	POM_PATH="$POM_PATH"
 fi
 echo "POM_PATH=$POM_PATH="
 #echo "###########################################"
