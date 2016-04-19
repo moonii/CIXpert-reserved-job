@@ -14,6 +14,7 @@ mvn_cnt_file="count.txt"
 mvn_err_word='Tests run:'
 mvn_no_test="No tests to run"
 mvn_fatal="FATAL"
+mvn_build_failure="BUILD FAILURE"
 
 echo "#1=$1=#2=$2=#3=$3=POM_PATH=$POM_PATH"
 
@@ -61,6 +62,17 @@ line_num=`cat $mvn_result_file".fatal" | wc -l`
 #echo "faltal.line_num=$line_num="
 if [ $line_num -gt 0 ]; then
 	exit 1
+fi
+##################################################
+
+
+# BUILD FAILURE check ####################################
+awk "/$mvn_build_failure/" $mvn_report_file > $mvn_result_file".buildf"
+
+line_num=`cat $mvn_result_file".buildf" | wc -l`
+#echo "buildf.line_num=$line_num="
+if [ $line_num -gt 0 ]; then
+        exit 1
 fi
 ##################################################
 
