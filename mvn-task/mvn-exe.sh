@@ -37,17 +37,18 @@ echo "mvn_cmd=$mvn_cmd="
 mvn $mvn_cmd | tee $mvn_report_file
 
 # keyword find & ...
+
+# FATAL check ####################################
+awk "/$mvn_fatal/" $mvn_report_file > $mvn_result_file".fatal"
+
+line_num=`cat $mvn_result.file".fatal" | wc -l`
+echo "faltal.line_num=$line_num="
+if [ $line_num -gt 0 ]; then
+	exit 1
+fi
+##################################################
+
 if [ $2 = "test" ]; then
-        # FATAL check ####################################
-	awk "/$mvn_fatal/" $mvn_report_file > $mvn_result_file".fatal"
-
-        line_num=`cat $mvn_result.file".fatal" | wc -l`
-	echo "faltal.line_num=$line_num="
-        if [ $line_num -gt 0 ]; then
-        	exit 1
-        fi
-        ##################################################
-
 	# No tests to run check ##########################
 	awk "/$mvn_no_test/" $mvn_report_file > $mvn_result_file".no"
 
