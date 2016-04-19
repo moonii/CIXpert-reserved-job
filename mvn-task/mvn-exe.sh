@@ -70,8 +70,9 @@ fi
 awk "/$mvn_build_failure/" $mvn_report_file > $mvn_result_file".buildf"
 
 line_num=`cat $mvn_result_file".buildf" | wc -l`
-#echo "buildf.line_num=$line_num="
+echo "buildf.line_num=$line_num="
 if [ $line_num -gt 0 ]; then
+	echo "$mvn_build_failure !!!"
         exit 1
 fi
 ##################################################
