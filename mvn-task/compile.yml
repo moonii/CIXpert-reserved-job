@@ -13,5 +13,5 @@ outputs:
 #    path: source-git/src/target
 run:
   path: ci-git/mvn-task/mvn-exe.sh 
-  args: ["tbd", "compile"]
+  args: ["tbd2", "compile"]
 
