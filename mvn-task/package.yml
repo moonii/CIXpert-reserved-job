@@ -15,4 +15,4 @@ run:
 
 outputs:
   - name: pkg-out
-    path: source-git/src/PaasXpertPortal/target
+#    path: source-git/src/PaasXpertPortal/target

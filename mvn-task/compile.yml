@@ -9,7 +9,7 @@ inputs:
   - name: source-git
   - name: ci-git
 outputs:
-  - name: jar-file
+  - name: compile-out
 #    path: source-git/src/target
 run:
   path: ci-git/mvn-task/mvn-exe.sh 

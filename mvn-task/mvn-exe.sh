@@ -38,11 +38,17 @@ mvn $mvn_cmd | tee $mvn_report_file
 
 # move output
 replace="target/classes"
+destination="compile-out"
+if [ $2 = "package"] ; then
+	replace="target"
+	destination="pkg-out"
+fi
+
 filename=`basename $POM_PATH`
 output_path=`echo $POM_PATH | sed -e "s#$filename#$replace#g"`
-echo "filename=$filename=output_path=$output_path="
+echo "filename=$filename=output_path=$output_path=destination=$destination="
 
-cp -r $output_path jar-file
+cp -r $output_path $destination
 
 # keyword find & ...
 
