@@ -40,6 +40,7 @@ mvn $mvn_cmd | tee $mvn_report_file
 replace="target/classes"
 filename=`basename $POM_PATH`
 output_path=`echo ${POM_PATH//$filename/$replace}`
+echo "echo.....=${POM_PATH//$filename/$replace}="
 echo "filename=$filename=output_path=$output_path="
 
 cp -r $output_path jar-file
