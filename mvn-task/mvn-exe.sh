@@ -41,7 +41,7 @@ mvn $mvn_cmd | tee $mvn_report_file
 # FATAL check ####################################
 awk "/$mvn_fatal/" $mvn_report_file > $mvn_result_file".fatal"
 
-line_num=`cat $mvn_result.file".fatal" | wc -l`
+line_num=`cat $mvn_result_file".fatal" | wc -l`
 echo "faltal.line_num=$line_num="
 if [ $line_num -gt 0 ]; then
 	exit 1
