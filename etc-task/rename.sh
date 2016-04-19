@@ -4,8 +4,8 @@
 
 echo "rename.sh called"
 
-VERSION="$(cat version/number)"
+NEW_VERSION="$(cat version/number)"
 
-echo "VERSION=$VERSION="
+echo "ARTIFACT_ID=$ARTIFACT_ID=VERSION=$VERSION=PACKAGING=$PACKAGING=NEW_VERSION=$NEW_VERSION="
 
-cp pkg-out/PaasXpert-Portal-0.0.1.war renamed-out/PaasXpert-Portal-${VERSION}.war
+cp pkg-out/$ARTIFACT_ID-$VERSION.$PACKAGING renamed-out/$ARTIFACT_ID-${NEW_VERSION}.$PACKAGING

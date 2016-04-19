@@ -6,6 +6,11 @@ platform: linux
 #  source:
 #    repository: concourse/concourse-ci
 
+params:
+  ARTIFACT_ID:
+  VERSION:
+  PACKAGING:
+
 inputs:
   - name: ci-git
   - name: version
