@@ -10,7 +10,7 @@ inputs:
   - name: ci-git
 outputs:
   - name: jar-file
-    path: source-git/src/PaasXpertPortal/target
+#    path: source-git/src/PaasXpertPortal/target
 run:
   path: ci-git/mvn-task/mvn-exe.sh 
   args: ["tbd", "compile"]
