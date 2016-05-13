@@ -12,9 +12,10 @@ echo "2...............................PWD=$PWD and ls -l"
 ls -l
 ./configure --prefix=/usr
 echo "3...............................configure"
+make install
 make
 make check
-sudo make install
+#sudo make install
 cd ..
 rm protobuf-$VERSION.tar.gz
 rm -rf protobuf-$VERSION
