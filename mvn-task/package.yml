@@ -9,10 +9,13 @@ inputs:
   - name: source-git
   - name: ci-git
 
+outputs:
+  - name: pkg-out
+
 run:
   path: ci-git/mvn-task/mvn-exe.sh
   args: ["tbd", "package", "true"]
 
-outputs:
-  - name: pkg-out
+#outputs:
+#  - name: pkg-out
 #    path: source-git/src/PaasXpertPortal/target
