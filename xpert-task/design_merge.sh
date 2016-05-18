@@ -15,3 +15,10 @@ ls -l design-git
 
 echo "ls -l design-git/PaaSXpertPortal"
 ls -l design-git/PaaSXpertPortal
+
+echo "ls -l ci-git"
+ls -l ci-git
+
+echo "ls -l ci-gitlab"
+ls -l ci-gitlab
+
