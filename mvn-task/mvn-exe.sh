@@ -73,13 +73,19 @@ replace="target/classes"
 destination="compile-out"
 
 if [ $2 = "package" ]; then
-        replace="target"
-        destination="pkg-out"
+
+	if [ $1 = "protoc" ]; then
+		replace="paasxpert.portal.api/target"
+		destination="pkg-out"
+	else
+        	replace="target"
+	        destination="pkg-out"
+	fi
 fi
 
 filename=`basename $POM_PATH`
 output_path=`echo $POM_PATH | sed -e "s#$filename#$replace#g"`
-#echo "filename=$filename=output_path=$output_path=destination=$destination="
+echo "filename=$filename=output_path=$output_path=destination=$destination="
 
 cp -r $output_path $destination
 
