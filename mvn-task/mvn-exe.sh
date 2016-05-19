@@ -17,11 +17,11 @@ mvn_build_failure="BUILD FAILURE"
 #echo "#1=$1=#2=$2=#3=$3=POM_PATH=$POM_PATH"
 
 if [ $1 = "protoc" ]; then
-cat source-git/paasxpert.portal.cfclient/bin/install-protoc-apt.sh
-cat ci-git/mvn-task/install-protoc-apt.sh
-ci-git/mvn-task/install-protoc-apt.sh
+#cat source-git/paasxpert.portal.cfclient/bin/install-protoc-apt.sh
+#cat ci-git/mvn-task/install-protoc-apt.sh
+#ci-git/mvn-task/install-protoc-apt.sh
 
-echo "install-protoc-apt end"
+#echo "install-protoc-apt end"
 
 fi
 
@@ -85,9 +85,14 @@ fi
 
 filename=`basename $POM_PATH`
 output_path=`echo $POM_PATH | sed -e "s#$filename#$replace#g"`
-echo "filename=$filename=output_path=$output_path=destination=$destination="
-
+#echo "filename=$filename=output_path=$output_path=destination=$destination="
+echo "cp -r $output_path $destination"
 cp -r $output_path $destination
+
+if [ $1 = "" ]; then
+	echo "cp source-git/paasxpert.portal.api/bin $destination"
+	cp source-git/paasxpert.portal.api/bin $destination
+fi
 
 if [ $2 = "test" ]; then
 	# No tests to run check ##########################
