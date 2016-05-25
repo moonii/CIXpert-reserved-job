@@ -90,7 +90,7 @@ output_path=`echo $POM_PATH | sed -e "s#$filename#$replace#g"`
 echo "[DEBUG]cp -r $output_path $destination"
 cp -r $output_path $destination
 
-if [ $1 == "protoc" ]; then
+if [ $1 = "protoc" ]; then
 	replace="paasxpert.portal.uaaclient/target"
 	output_path=`echo $POM_PATH | sed -e "s#$filename#$replace#g"`
 	echo "[DEBUG]cp -r $output_path $destination"
