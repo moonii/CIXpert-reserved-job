@@ -25,6 +25,5 @@ echo "	CF_API:      $CF_API
 
 #02.cf push
 cf api $CF_API --skip-ssl-validation
-cf login -u "$CF_USERNAME" -p "$CF_PASSWORD"
-cf target -o "$CF_ORG" -s "$CF_SPACE"
+cf login -u "$CF_USERNAME" -p "$CF_PASSWORD " -o "$CF_ORG" -s "$CF_SPACE"
 cf push -f "$MANIFEST" -p "$APP_PATH"
