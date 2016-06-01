@@ -4,8 +4,13 @@
 #echo "" > blank.file
 #echo "nameserver 52.21.208.105" > append.script 
 #sed -f append.script blank.file >> /etc/resolv.conf
+echo "cat /etc/resolv.conf origin"
+cat /etc/resolv.conf
 
 echo "nameserver 52.21.208.105" >> /etc/resolv.conf
+
+echo "cat /etc/resolv.conf modified"
+cat /etc/resolv.conf
 
 echo "	CF_API:      $CF_API
 	CF_USERNAME: $CF_USERNAME
