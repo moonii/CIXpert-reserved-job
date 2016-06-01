@@ -7,7 +7,10 @@
 echo "cat /etc/resolv.conf origin"
 cat /etc/resolv.conf
 
-echo "nameserver 52.21.208.105" >> /etc/resolv.conf
+echo "copy & append"
+cp /etc/resolv.conf temp.conf
+sed '1 i\nameserver 52.21.208.105' temp.conf > /etc/resolv.conf
+#echo "nameserver 52.21.208.105" >> /etc/resolv.conf
 
 echo "cat /etc/resolv.conf modified"
 cat /etc/resolv.conf
