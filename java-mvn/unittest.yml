@@ -7,8 +7,8 @@ params:
 
 inputs:
   - name: source-git
-  - name: resesrved-job-git
+  - name: reserved-job-git
 
 run:
-  path: resesrved-job-git/mvn-task/mvn-exe.sh
+  path: reserved-job-git/mvn-task/mvn-exe.sh
   args: ["tbd", "test", "false"]

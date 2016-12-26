@@ -8,12 +8,12 @@ image: docker:///concourse/git-resource
 #    repository: concourse/concourse-ci
 
 inputs:
-  - name: ci-git
+  - name: reserved-job-git
   - name: source-git
 
 outputs:
   - name: generated-commitish
 
 run:
-  path: ci-git/etc-task/commitish.sh
+  path: ci-resesrved-job/etc-task/commitish.sh
 

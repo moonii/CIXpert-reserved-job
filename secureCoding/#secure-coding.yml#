@@ -8,10 +8,10 @@ params:
 inputs:
   - name: source-git
   - name: compile-out
-  - name: ci-git
+  - name: reserved-job-git
 outputs:
-  - name: findbugs-out
+  - name: secure-coding-out
 #    path: jar-file/reports
 run:
-  path: ci-git/findbugs-task/findbugs-exe.sh 
+  path: reserved-job-git/secureCoding/secure-coding-exe.sh 
   args: ["compile-out/classes"]

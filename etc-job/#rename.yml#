@@ -12,7 +12,7 @@ params:
   PACKAGING:
 
 inputs:
-  - name: ci-git
+  - name: reserved-job-git
   - name: version
   - name: pkg-out
 
@@ -20,7 +20,7 @@ outputs:
   - name: renamed-out
 
 run:
-  path: ci-git/etc-task/rename.sh
+  path: reserved-job-git/etc-task/rename.sh
   #path: cp
   #args: ["pkg-out/PaasXpert-Portal-0.0.1.war", "renamed-out/PaasXpert-Portal-$(cat version/number).war"]
 

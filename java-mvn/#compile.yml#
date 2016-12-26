@@ -7,11 +7,11 @@ params:
 
 inputs:
   - name: source-git
-  - name: ci-git
+  - name: reserved-job-git
 outputs:
   - name: compile-out
 #    path: source-git/src/target
 run:
-  path: ci-git/mvn-task/mvn-exe.sh 
+  path: reserved-job-git/mvn-task/mvn-exe.sh
   args: ["tbd2", "compile"]
 

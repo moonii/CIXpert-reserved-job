@@ -8,7 +8,7 @@ image: docker:///concourse/git-resource
 #    repository: concourse/concourse-ci
 
 inputs:
-  - name: resesrved-job-git
+  - name: reserved-job-git
   - name: source-git
 
 outputs:

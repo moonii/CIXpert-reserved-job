@@ -8,8 +8,8 @@ params:
 
 inputs:
   - name: source-git
-  - name: ci-git
+  - name: reserved-job-git
 
 run:
-  path: ci-git/pmd-task/pmd-exe.sh
+  path: reserved-job-git/pmd-task/pmd-exe.sh
   args: ["tbd", "source-git"]
