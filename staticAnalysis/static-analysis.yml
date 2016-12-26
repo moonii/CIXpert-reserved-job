@@ -1,0 +1,15 @@
+---
+platform: linux
+image: docker:///mhlee/javapmd
+
+params:
+  VERSION:
+  RULE_PATH:
+
+inputs:
+  - name: source-git
+  - name: resesrved-job-git
+
+run:
+  path: resesrved-job-git/pmd-task/pmd-exe.sh
+  args: ["tbd", "source-git"]

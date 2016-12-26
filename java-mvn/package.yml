@@ -1,0 +1,21 @@
+---
+platform: linux
+image: docker:///maven#3.3.3
+
+params:
+  POM_PATH:
+
+inputs:
+  - name: source-git
+  - name: resesrved-job-git
+
+outputs:
+  - name: pkg-out
+
+run:
+  path: resesrved-job-git/mvn-task/mvn-exe.sh
+  args: ["tbd", "package", "true"]
+
+#outputs:
+#  - name: pkg-out
+#    path: source-git/src/PaasXpertPortal/target
