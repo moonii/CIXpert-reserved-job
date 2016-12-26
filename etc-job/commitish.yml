@@ -15,5 +15,5 @@ outputs:
   - name: generated-commitish
 
 run:
-  path: ci-resesrved-job/etc-task/commitish.sh
+  path: ci-resesrved-job/etc-job/commitish.sh
 

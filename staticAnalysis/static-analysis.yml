@@ -11,5 +11,5 @@ inputs:
   - name: reserved-job-git
 
 run:
-  path: reserved-job-git/pmd-task/pmd-exe.sh
+  path: reserved-job-git/staticAnalysis/static-analysis-exe.sh
   args: ["tbd", "source-git"]

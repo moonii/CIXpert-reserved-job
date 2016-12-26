@@ -18,8 +18,8 @@ mvn_build_failure="BUILD FAILURE"
 
 #if [ $1 = "protoc" ]; then
 	##cat source-git/paasxpert.portal.cfclient/bin/install-protoc-apt.sh
-	#cat reserved-job-git/mvn-task/install-protoc-apt.sh
-	#reserved-job-git/mvn-task/install-protoc-apt.sh
+	#cat reserved-job-git/java-mvn/install-protoc-apt.sh
+	#reserved-job-git/java-mvn/install-protoc-apt.sh
 
 	#echo "install-protoc-apt end"
 
