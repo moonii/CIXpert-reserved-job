@@ -13,7 +13,7 @@ outputs:
   - name: pkg-out
 
 run:
-  path: reserved-job-git/mvn-task/mvn-exe.sh
+  path: reserved-job-git/java-mvn/mvn-exe.sh
   args: ["tbd", "package", "true"]
 
 #outputs:

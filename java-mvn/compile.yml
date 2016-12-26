@@ -12,6 +12,6 @@ outputs:
   - name: compile-out
 #    path: source-git/src/target
 run:
-  path: reserved-job-git/mvn-task/mvn-exe.sh
+  path: reserved-job-git/java-mvn/mvn-exe.sh
   args: ["tbd2", "compile"]
 

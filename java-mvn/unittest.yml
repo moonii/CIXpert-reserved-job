@@ -10,5 +10,5 @@ inputs:
   - name: reserved-job-git
 
 run:
-  path: reserved-job-git/mvn-task/mvn-exe.sh
+  path: reserved-job-git/java-mvn/mvn-exe.sh
   args: ["tbd", "test", "false"]
