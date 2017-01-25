@@ -14,7 +14,7 @@ mvn_err_word='Tests run:'
 mvn_no_test="No tests to run"
 mvn_fatal="FATAL"
 mvn_build_failure="BUILD FAILURE"
-#echo "#1=$1=#2=$2=#3=$3=POM_PATH=$POM_PATH"
+echo "#1=$1=#2=$2=#3=$3=POM_PATH=$POM_PATH"
 
 #if [ $1 = "protoc" ]; then
 	##cat source-git/paasxpert.portal.cfclient/bin/install-protoc-apt.sh
